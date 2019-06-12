@@ -88,18 +88,29 @@ INSERT INTO Customers(CustomerName, ContactName, Address, City, PostalCode, Coun
 VALUES ('The Shire', 'Bilbo Baggins', '1 Hobbit-HOle', 'Bag End', '111', 'Middle Earth')
 ```
 
-- [ ] update _Bilbo Baggins_ record so that the postal code changes to _"11122"_.
+- [x] update _Bilbo Baggins_ record so that the postal code changes to _"11122"_.
 
 > This can be done with UPDATE and WHERE clauses
 
-- [ ] list orders grouped by customer showing the number of orders per customer. _Rattlesnake Canyon Grocery_ should have 7 orders.
+```sql
+UPDATE Customers
+SET Address = '1 Hobbit-Hole', PostalCode = '11122'
+WHERE ContactName = 'Bilbo Baggins'
+```
+
+- [x] list orders grouped by customer showing the number of orders per customer. _Rattlesnake Canyon Grocery_ should have 7 orders.
 
 > This can be done with SELECT, COUNT, JOIN and GROUP BY clauses. Your count should focus on a field in the Orders table, not the Customer table
 
 > There is more information about the COUNT clause on [W3 Schools](https://www.w3schools.com/sql/sql_count_avg_sum.asp)
 
 ```sql
-
+SELECT c.CustomerID, c.CustomerName, COUNT(o.CustomerID) AS TotalOrders
+FROM Orders AS o
+LEFT JOIN Customers AS c
+ON o.CustomerID = c.CustomerID
+GROUP BY c.CustomerID
+ORDER BY c.CustomerName ASC
 ```
 
 - [ ] list customers names and the number of orders per customer. Sort the list by number of orders in descending order. _Ernst Handel_ should be at the top with 10 orders followed by _QUICK-Stop_, _Rattlesnake Canyon Grocery_ and _Wartian Herkku_ with 7 orders each.
