@@ -41,6 +41,12 @@ WHERE PostalCode = '1010'
 
 > This can be done with SELECT and WHERE clauses
 
+```sql
+SELECT Phone
+FROM Suppliers
+WHERE SupplierID = 11
+```
+
 ### list orders descending by the order date. The order with date 1997-02-12 should be at the top.
 
 > This can be done with SELECT, WHERE, and ORDER BY clauses
