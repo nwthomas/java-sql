@@ -62,10 +62,12 @@ ORDER BY OrderDate DESC
 > This can be done with SELECT and WHERE clauses
 
 ```sql
-
+SELECT *
+FROM Suppliers
+WHERE LENGTH(SupplierName) > 20
 ```
 
-- [ ] find all customers that include the word "market" in the name. Should return 4 records.
+- [x] find all customers that include the word "market" in the name. Should return 4 records.
 
 > This can be done with SELECT and a WHERE clause using the LIKE keyword
 
